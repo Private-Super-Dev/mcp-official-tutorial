@@ -131,7 +131,7 @@ Once the client is running, you can try these example queries:
 
 2. **Check for weather alerts**:
    ```
-   Are there any weather alerts in CA?
+   What's the forecast for latitude 34.0522, longitude -118.2437?
    ```
 
 Claude will process your query, determine when to use the weather tools, and return the results.
@@ -170,7 +170,3 @@ Make sure you've:
 - [Anthropic API Documentation](https://docs.anthropic.com/)
 - [MCP Quickstart Tutorial](https://modelcontextprotocol.io/quickstart)
 - [Building MCP Clients Tutorial](https://modelcontextprotocol.io/tutorials/building-a-client)
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
