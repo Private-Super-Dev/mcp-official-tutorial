@@ -84,22 +84,7 @@ Replace `your_api_key_here` with the actual API key you obtained from the Anthro
 
 ## Running the Project
 
-You'll need two terminal windows - one for the server and one for the client.
-
-### Terminal 1: Run the Weather Server
-
-```bash
-# Make sure you're in the project root with the virtual environment activated
-cd mcp-official-tutorial
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-
-# Run the weather server
-python weather-server-python/weather.py
-```
-
-The server will start and wait for client connections.
-
-### Terminal 2: Run the MCP Client
+### Run the MCP Client
 
 ```bash
 # Make sure you're in the project root with the virtual environment activated
