@@ -1,0 +1,117 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background and styles -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8f9fa" />
+      <stop offset="100%" stop-color="#e9ecef" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="2" stdDeviation="2" flood-opacity="0.3" />
+    </filter>
+    <style>
+      .title { font: bold 24px sans-serif; fill: #212529; }
+      .subtitle { font: 16px sans-serif; fill: #495057; }
+      .box { rx: 8px; ry: 8px; filter: url(#shadow); }
+      .box-title { font: bold 14px sans-serif; fill: white; }
+      .box-text { font: 12px sans-serif; fill: #343a40; }
+      .arrow { stroke: #6c757d; stroke-width: 2; fill: none; marker-end: url(#arrow-marker); }
+      .number-circle { r: 12; fill: #6c757d; }
+      .number-text { font: bold 14px sans-serif; fill: white; text-anchor: middle; dominant-baseline: central; }
+      .note { font: italic 12px sans-serif; fill: #6c757d; }
+    </style>
+    <marker id="arrow-marker" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L0,10 L10,5 Z" fill="#6c757d" />
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="url(#bg-gradient)" />
+
+  <!-- Title -->
+  <text x="450" y="30" class="title" text-anchor="middle">Model Context Protocol (MCP) Architecture</text>
+  <text x="450" y="50" class="subtitle" text-anchor="middle">How Claude interacts with external tools using MCP</text>
+
+  <!-- User box -->
+  <rect x="50" y="100" width="150" height="80" class="box" fill="#6c757d" />
+  <text x="125" y="125" class="box-title" text-anchor="middle">User</text>
+  <text x="125" y="150" class="box-text" text-anchor="middle" fill="white">Enters a query about weather</text>
+
+  <!-- MCP Client box -->
+  <rect x="300" y="100" width="200" height="150" class="box" fill="#228be6" />
+  <text x="400" y="125" class="box-title" text-anchor="middle">MCP Client (Python)</text>
+  <text x="400" y="150" class="box-text" text-anchor="middle" fill="white">- Manages communication</text>
+  <text x="400" y="170" class="box-text" text-anchor="middle" fill="white">- Sends queries to Claude</text>
+  <text x="400" y="190" class="box-text" text-anchor="middle" fill="white">- Handles tool execution</text>
+  <text x="400" y="210" class="box-text" text-anchor="middle" fill="white">- Returns responses</text>
+
+  <!-- Claude box -->
+  <rect x="600" y="100" width="200" height="150" class="box" fill="#7950f2" />
+  <text x="700" y="125" class="box-title" text-anchor="middle">Claude API</text>
+  <text x="700" y="150" class="box-text" text-anchor="middle" fill="white">- Processes user queries</text>
+  <text x="700" y="170" class="box-text" text-anchor="middle" fill="white">- Decides when to use tools</text>
+  <text x="700" y="190" class="box-text" text-anchor="middle" fill="white">- Formulates tool parameters</text>
+  <text x="700" y="210" class="box-text" text-anchor="middle" fill="white">- Incorporates tool results</text>
+
+  <!-- MCP Server box -->
+  <rect x="300" y="350" width="200" height="150" class="box" fill="#12b886" />
+  <text x="400" y="375" class="box-title" text-anchor="middle">Weather MCP Server</text>
+  <text x="400" y="400" class="box-text" text-anchor="middle" fill="white">- Implements MCP protocol</text>
+  <text x="400" y="420" class="box-text" text-anchor="middle" fill="white">- Exposes weather tools</text>
+  <text x="400" y="440" class="box-text" text-anchor="middle" fill="white">- get_forecast (lat/long)</text>
+  <text x="400" y="460" class="box-text" text-anchor="middle" fill="white">- get_alerts (state code)</text>
+
+  <!-- National Weather Service box -->
+  <rect x="600" y="350" width="200" height="120" class="box" fill="#ff922b" />
+  <text x="700" y="375" class="box-title" text-anchor="middle">National Weather Service</text>
+  <text x="700" y="400" class="box-text" text-anchor="middle" fill="white">- External weather API</text>
+  <text x="700" y="420" class="box-text" text-anchor="middle" fill="white">- Provides real-time data</text>
+  <text x="700" y="440" class="box-text" text-anchor="middle" fill="white">- Used by weather server</text>
+
+  <!-- Arrows -->
+  <!-- User to MCP Client -->
+  <path d="M200,140 L300,140" class="arrow" />
+  <!-- MCP Client to Claude -->
+  <path d="M500,140 L600,140" class="arrow" />
+  <!-- Claude to MCP Client -->
+  <path d="M600,190 L500,190" class="arrow" />
+  <!-- MCP Client to User -->
+  <path d="M300,190 L200,190" class="arrow" />
+  <!-- MCP Client to MCP Server -->
+  <path d="M400,250 L400,350" class="arrow" />
+  <!-- MCP Server to National Weather Service -->
+  <path d="M500,400 L600,400" class="arrow" />
+  <!-- National Weather Service to MCP Server -->
+  <path d="M600,430 L500,430" class="arrow" />
+
+  <!-- Numbered Steps -->
+  <!-- 1. User query -->
+  <circle cx="250" cy="125" class="number-circle" />
+  <text x="250" y="125" class="number-text">1</text>
+  <!-- 2. Client to Claude -->
+  <circle cx="550" cy="125" class="number-circle" />
+  <text x="550" y="125" class="number-text">2</text>
+  <!-- 3. Claude decides to use tool -->
+  <circle cx="550" cy="190" class="number-circle" />
+  <text x="550" y="190" class="number-text">3</text>
+  <!-- 4. MCP Client to MCP Server -->
+  <circle cx="380" cy="300" class="number-circle" />
+  <text x="380" y="300" class="number-text">4</text>
+  <!-- 5. Server to NWS -->
+  <circle cx="550" cy="400" class="number-circle" />
+  <text x="550" y="400" class="number-text">5</text>
+  <!-- 6. Results back to Claude -->
+  <circle cx="250" cy="190" class="number-circle" />
+  <text x="250" y="190" class="number-text">6</text>
+
+  <!-- Explanation panel -->
+  <rect x="50" y="500" width="800" height="80" rx="8" ry="8" fill="white" filter="url(#shadow)" />
+  <text x="60" y="520" class="box-text">
+    <tspan x="60" dy="0" style="font-weight: bold;">How it works:</tspan>
+    <tspan x="60" dy="18">1. User sends a weather query to the MCP client</tspan>
+    <tspan x="350" dy="0">2. Client forwards query + available tools to Claude</tspan>
+    <tspan x="60" dy="18">3. Claude decides to use a weather tool</tspan>
+    <tspan x="350" dy="0">4. Client executes the tool via MCP server</tspan>
+    <tspan x="600" dy="0">5. Weather server calls NWS API</tspan>
+    <tspan x="60" dy="18">6. Results flow back to the user through the same path</tspan>
+  </text>
+</svg>

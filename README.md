@@ -144,6 +144,8 @@ Claude will process your query, determine when to use the weather tools, and ret
 4. The tool result is sent back to Claude for further processing
 5. The final response is displayed to you
 
+![alt text](mcp-diagram.svg)
+
 ## Troubleshooting
 
 ### API Key Issues
